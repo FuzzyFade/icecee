@@ -1,7 +1,7 @@
 <template>
     <div class="header">
         <div class="header_left">
-            <div class="iconfont back_icon">&#xe624;</div>
+            <div class="iconfont back_icon" @click="back">&#xe624;</div>
         </div>
         <div class="header_input">
             <span class="iconfont">&#xe632;</span>
@@ -9,7 +9,7 @@
         </div>
         <div class="header_right">
             City
-            <span class="iconfont">&#xeb6d;</span>
+            <span class="iconfont arrow_icon">&#xeb6d;</span>
         </div>
     </div>
 </template>
@@ -17,6 +17,9 @@
 <script>
     export default {
         name: "Hoheader"
+    }
+    function back() {
+        src = ''
     }
 </script>
 
@@ -48,4 +51,6 @@
             text-align: center
             width 25%
             float right
+            .arrow_icon
+                font-size .4rem
 </style>
