@@ -35,7 +35,7 @@
             float left
             .back_icon
                 text-align center
-                font-size 1.1rem
+                font-size 1.15rem
         .header_input
             flex 1
             float left
