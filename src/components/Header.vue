@@ -1,7 +1,7 @@
 <template>
     <div class="header">
         <div class="header_left">
-            <div class="iconfont back_icon" @click="back">&#xe624;</div>
+            <div class="iconfont back_icon">&#xe624;</div>
         </div>
         <div class="header_input">
             <span class="iconfont">&#xe632;</span>
@@ -17,9 +17,6 @@
 <script>
     export default {
         name: "Hoheader"
-    }
-    function back() {
-        src = ''
     }
 </script>
 
