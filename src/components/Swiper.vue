@@ -32,6 +32,7 @@
                         // progressbarOpposite:true,
                     },
                     loop : true,
+                    autoplay:true,
                 }
             }
         }
@@ -43,6 +44,8 @@
         height 1rem
         position absolute
         top 8.75rem
+    .wrapper >>> .swiper-pagination-progressbar-fill
+        background-color #f7f0f5
     .wrapper
         overflow hidden
         width 100%
