@@ -17,7 +17,7 @@
             <!--<div class="swiper-button-next" slot="button-next"></div>-->
             <!--<div class="swiper-scrollbar"   slot="scrollbar"></div>-->
         </swiper>
-        </div>
+    </div>
 </template>
 
 <script>
@@ -26,13 +26,17 @@
         data () {
             return {
                 swiperOption:{
+                    grabCursor:true,
+                    speed:600,
+                    loop : true,
                     pagination : {
                         el:'.swiper-pagination',
                         type:'progressbar',
-                        // progressbarOpposite:true,
                     },
-                    loop : true,
-                    autoplay:true,
+                    autoplay : {
+                        disableOnInteraction: false,
+                        delay : 3500,
+                    },
                 }
             }
         }
@@ -45,7 +49,7 @@
         position absolute
         top 8.75rem
     .wrapper >>> .swiper-pagination-progressbar-fill
-        background-color #f7f0f5
+        background-color #f7f4f4
     .wrapper
         overflow hidden
         width 100%

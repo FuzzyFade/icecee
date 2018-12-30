@@ -1,18 +1,21 @@
 <template>
   <div>
-    <hoheader></hoheader>
-    <homeswiper></homeswiper>
+    <ho-header></ho-header>
+    <ho-swiper></ho-swiper>
+    <ho-icons></ho-icons>
   </div>
 </template>
 
 <script>
-  import Hoheader from "@/components/Header";
-  import Homeswiper from '@/components/Swiper.vue';
+  import HoHeader from "@/components/Header";
+  import HoSwiper from '@/components/Swiper.vue';
+  import HoIcons from '@/components/Icons.vue';
   export default {
     name: 'Homepage',
     components: {
-      Hoheader,
-      Homeswiper,
+      HoHeader,
+      HoSwiper,
+      HoIcons
     }
   }
 </script>
