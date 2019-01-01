@@ -15,7 +15,7 @@
     components: {
       HoHeader,
       HoSwiper,
-      HoIcons
+      HoIcons,
     }
   }
 </script>

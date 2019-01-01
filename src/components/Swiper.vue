@@ -26,12 +26,12 @@
         data () {
             return {
                 swiperOption:{
-                    grabCursor:true,
-                    speed:600,
+                    grabCursor: true,
+                    speed: 600,
                     loop : true,
                     pagination : {
-                        el:'.swiper-pagination',
-                        type:'progressbar',
+                        el: '.swiper-pagination',
+                        type: 'progressbar',
                     },
                     autoplay : {
                         disableOnInteraction: false,
