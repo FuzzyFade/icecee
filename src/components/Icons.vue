@@ -58,10 +58,6 @@
                     icon : '&#xe613',
                     name : '不知道',
                     color : '#2e4eb6',
-                }, {
-                    icon : '&#xe613',
-                    name : '不知2323232道',
-                    color : '#2e4eb6',
                 }],
                 swiperOption: {
 

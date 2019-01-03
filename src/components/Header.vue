@@ -1,17 +1,32 @@
 <template>
-    <div class="header">
-        <div class="header_left">
-            <div class="iconfont back_icon">&#xe624;</div>
-        </div>
-        <div class="header_input">
-            <span class="iconfont">&#xe632;</span>
-            <span> Search your need</span>
-        </div>
-        <div class="header_right">
-            City
-            <span class="iconfont arrow_icon">&#xeb6d;</span>
-        </div>
-    </div>
+    <v-toolbar dark>
+        <v-toolbar-side-icon></v-toolbar-side-icon>
+        <v-toolbar-title>
+            Icecee
+        </v-toolbar-title>
+        <v-spacer></v-spacer>
+        <v-toolbar-items>
+            <v-btn icon>
+                <v-icon>home</v-icon>
+            </v-btn>
+            <v-btn icon>
+                <v-icon>more_vert</v-icon>
+            </v-btn>
+        </v-toolbar-items>
+    </v-toolbar>
+    <!--<div class="header">-->
+        <!--<div class="header_left">-->
+            <!--<div class="iconfont back_icon">&#xe624;</div>-->
+        <!--</div>-->
+        <!--<div class="header_input">-->
+            <!--<span class="iconfont">&#xe632;</span>-->
+            <!--<span> Search your need</span>-->
+        <!--</div>-->
+        <!--<div class="header_right">-->
+            <!--City-->
+            <!--<span class="iconfont arrow_icon">&#xeb6d;</span>-->
+        <!--</div>-->
+    <!--</div>-->
 </template>
 
 <script>
@@ -21,6 +36,8 @@
 </script>
 
 <style lang="stylus" scoped>
+    $color-pack = false
+    @import '~vuetify/src/stylus/main'
     .header
         display flex
         line-height 3.12rem

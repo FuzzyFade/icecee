@@ -2,14 +2,8 @@
     <div class="wrapper">
         <swiper :options="swiperOption">
             <!-- slides -->
-            <swiper-slide>
-                <div class="loopic" style="background-color: aquamarine"></div>
-            </swiper-slide>
-            <swiper-slide>
-                <div class="loopic" style="background-color: #ff8687"></div>
-            </swiper-slide>
-            <swiper-slide>
-                <div class="loopic" style="background-color: #ffdf8e"></div>
+            <swiper-slide v-for="pic of pic_list">
+                <div class="loopic" :style="{background : pic.color}"></div>
             </swiper-slide>
             <!-- Optional controls -->
             <div class="swiper-pagination"  slot="pagination"></div>
@@ -25,6 +19,19 @@
         name: "Hoswiper",
         data () {
             return {
+                pic_list:[{
+                    them : "blue",
+                    color : "#97ffbc"
+                }, {
+                    them : "yellow",
+                    color : "#ffda62"
+                }, {
+                    them : "red",
+                    color : "#ff5a5d"
+                }, {
+                    them : "back",
+                    color : "#4d4547"
+                }],
                 swiperOption:{
                     grabCursor: true,
                     speed: 600,
@@ -36,7 +43,7 @@
                     autoplay : {
                         disableOnInteraction: false,
                         delay : 3500,
-                    },
+                    }
                 }
             }
         }
@@ -47,16 +54,16 @@
     .wrapper >>> .swiper-pagination-progressbar
         height 1rem
         position absolute
-        top 8.75rem
+        top 11.7rem
     .wrapper >>> .swiper-pagination-progressbar-fill
         background-color #f7f4f4
     .wrapper
         overflow hidden
         width 100%
         height 0
-        padding-bottom 9rem
+        padding-bottom 12rem
         background-color #ebf5f7
         .loopic
             width 100%
-            height 9rem
+            height 12rem
 </style>

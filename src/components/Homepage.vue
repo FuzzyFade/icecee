@@ -22,5 +22,6 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="stylus" scoped>
-
+  $color-pack = false
+  @import '~vuetify/src/stylus/main'
 </style>
