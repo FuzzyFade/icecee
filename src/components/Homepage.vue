@@ -1,9 +1,11 @@
 <template>
-  <div>
+  <v-app>
+  <div class="hide-overflow" style="position: relative">
     <ho-header></ho-header>
-    <ho-swiper></ho-swiper>
-    <ho-icons></ho-icons>
+      <v-container style="height: 60rem;">
+      </v-container>
   </div>
+    </v-app>
 </template>
 
 <script>
@@ -16,7 +18,7 @@
       HoHeader,
       HoSwiper,
       HoIcons,
-    }
+    },
   }
 </script>
 

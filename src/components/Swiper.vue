@@ -53,7 +53,7 @@
 <style lang="stylus" scoped>
     .wrapper >>> .swiper-pagination-progressbar
         height 1rem
-        position absolute
+        position flex
         top 11.7rem
     .wrapper >>> .swiper-pagination-progressbar-fill
         background-color #f7f4f4
