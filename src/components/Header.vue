@@ -1,32 +1,4 @@
 <template>
-    <v-toolbar dark>
-        <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-        <v-toolbar-title>
-            Icecee
-        </v-toolbar-title>
-        <v-spacer></v-spacer>
-        <v-toolbar-items>
-            <v-btn icon >
-                <v-icon>search</v-icon>
-            </v-btn>
-            <v-menu offset-y left>
-                <v-btn icon slot="activator">
-                    <v-icon>more_vert</v-icon>
-                </v-btn>
-                <v-list>
-                    <v-list-tile
-                        v-for="(item,index) in items"
-                        :key="index"
-                        @click=""
-                    >
-                        <v-list-tile-title>
-                            {{item.con}}
-                        </v-list-tile-title>
-                    </v-list-tile>
-                </v-list>
-            </v-menu>
-        </v-toolbar-items>
-    </v-toolbar>
     <!--<v-navigation-drawer temporary>-->
         <!--<v-list>-->
             <!--23333-->
@@ -58,8 +30,7 @@
             }, {
                 con : 'meili',
             }],
-
-            drawer: null
+            drawer: false,
         })
     }
 </script>

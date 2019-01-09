@@ -1,11 +1,5 @@
 <template>
-  <v-app>
-  <div class="hide-overflow" style="position: relative">
-    <ho-header></ho-header>
-      <v-container style="height: 60rem;">
-      </v-container>
-  </div>
-    </v-app>
+  <ho-header></ho-header>
 </template>
 
 <script>

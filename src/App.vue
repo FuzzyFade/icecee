@@ -1,15 +1,17 @@
 <template>
   <div id="app">
-    <homepage></homepage>
+    <vue-hopage></vue-hopage>
   </div>
 </template>
 
 <script>
   import Homepage from './components/Homepage.vue'
+  import VueHopage from './components/Vuepage.vue'
   export default {
     name: 'App',
     components: {
-      Homepage
+      Homepage,
+      VueHopage
     }
   }
 </script>

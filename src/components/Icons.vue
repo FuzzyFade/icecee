@@ -85,7 +85,6 @@
         overflow hidden
         height 0
         padding-bottom 50%
-        background-color: #fff
         .icon
             overflow hidden
             position relative
@@ -108,6 +107,6 @@
                     font-size .9rem
                     text-align center
                     position relative
-                    color #5d5d5d
+                    color #ffffff
 
 </style>

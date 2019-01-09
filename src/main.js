@@ -7,7 +7,7 @@ import 'swiper/dist/css/swiper.css'
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
 import '@mdi/font/css/materialdesignicons.css'
 import Vuetify from 'vuetify'
-import 'babel-polyfill'
+import 'vuetify/src/stylus/app.styl'
 
 Vue.config.productionTip = false
 Vue.use(VueAwesomeSwiper)

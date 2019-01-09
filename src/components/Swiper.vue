@@ -2,7 +2,7 @@
     <div class="wrapper">
         <swiper :options="swiperOption">
             <!-- slides -->
-            <swiper-slide v-for="pic of pic_list">
+            <swiper-slide v-for="pic of pic_list":key="pic.id">
                 <div class="loopic" :style="{background : pic.color}"></div>
             </swiper-slide>
             <!-- Optional controls -->
@@ -20,15 +20,19 @@
         data () {
             return {
                 pic_list:[{
+                    id:"001",
                     them : "blue",
                     color : "#97ffbc"
                 }, {
+                    id:"002",
                     them : "yellow",
                     color : "#ffda62"
                 }, {
+                    id:"003",
                     them : "red",
                     color : "#ff5a5d"
                 }, {
+                    id:"004",
                     them : "back",
                     color : "#4d4547"
                 }],
