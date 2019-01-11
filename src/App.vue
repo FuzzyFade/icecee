@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <vue-hopage></vue-hopage>
+    <router-view/>
   </div>
 </template>
 

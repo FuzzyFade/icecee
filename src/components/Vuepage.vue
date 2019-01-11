@@ -62,45 +62,56 @@
 
         <v-content>
             <v-container>
-                <v-form>
+                <div>
                     <v-text-field
                             v-model="account"
                             :rules="[
-                                () => !!account || '该选项不能为空',
-                                () => !this.names.includes(this.account) || '该用户已存在',
+                                rules.empty_if,
+                                rules.account_same(names, account),
                             ]"
                             :error-messages="errorMessage"
-                            counter maxlength="10"
                             color="white"
-                            label="Account"
+                            label="用户名"
+                            hint="用户名不可修改哦"
+                            counter maxlength="12"
                             required
                     ></v-text-field>
+
                     <v-text-field
                             :append-icon="show1 ? 'visibility_off' : 'visibility' "
                             @click:append="show1 =! show1"
                             v-model="pw"
                             :rules="[
-                                () => !!pw || '该选项不能为空',
+                                rules.empty_if,
+                                rules.password_len,
                             ]"
                             :error-messages="errorMessage"
                             :type="show1 ? 'text' : 'password'"
                             color="white"
-                            label="Password"
+                            label="密码"
                             required
                     ></v-text-field>
+
                     <v-text-field
                             v-model="repw"
                             :rules="[
-                                () => !!repw || '该选项不能为空',
-                                () => repw === pw || '前后密码不一致',
+                                rules.empty_if,
+                                rules.password_same(repw, pw),
                             ]"
                             :error-messages="errorMessage"
                             :type="show1 ? 'text' : 'password'"
                             color="white"
-                            label="Password reinput"
+                            label="重新输入密码"
                             required
                     ></v-text-field>
-                </v-form>
+                </div>
+                <div>
+                    <v-flex class="text-xs-center" style="padding-top: 2rem;">
+                        <v-btn large color="blue">
+                            <span>注册账户</span>
+                        </v-btn>
+                    </v-flex>
+                </div>
             </v-container>
         </v-content>
     </v-app>
@@ -110,7 +121,7 @@
     export default {
         name: "Vuepage",
 
-        data: () => ({
+        data: () => ({              //信息
             items: [{
                 con : '账户信息',
             }, {
@@ -118,13 +129,20 @@
             }],
 
             errorMessage:[],
-            names:["bob","daer"],   //去复用户名
+            names:["bob","daer"],   //已注册的用户名
             account: null,
             pw: null,
             repw: null,
             show1:false,
 
             drawer: false,
+
+            rules: {
+                empty_if: value => !!value || '该选项不能为空',
+                account_same: (list, account) => !list.includes(account) || '该用户已存在',
+                password_same: (repw, pw) => repw === pw || '前后密码不一致',
+                password_len: value => (value + 1).length >= 8 || '密码长度要大于7',
+            }
         }),
 
         computed: {
@@ -133,7 +151,7 @@
                     account: this.account,
                     pw: this.pw,
                     repw: this.repw,
-                }
+                };
             },
         },
 
@@ -144,6 +162,7 @@
         },
 
         method: {
+
         }
 
     }
@@ -151,7 +170,5 @@
 
 <style lang="stylus" scoped>
     @import '~vuetify/src/stylus/main'
-    .input
-        background none
-        border none
+
 </style>
