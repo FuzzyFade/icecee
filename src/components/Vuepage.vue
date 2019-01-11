@@ -18,6 +18,7 @@
                 </v-list-tile>
             </v-list>
         </v-navigation-drawer>
+
         <v-toolbar
                 dark
                 clipped-left
@@ -29,7 +30,7 @@
                     @click.stop="drawer = !drawer"
             ></v-toolbar-side-icon>
             <v-toolbar-title>
-                Icecee
+                注册
             </v-toolbar-title>
             <v-spacer></v-spacer>
             <v-btn icon>
@@ -58,29 +59,46 @@
                 </v-menu>
             </v-toolbar-items>
         </v-toolbar>
+
         <v-content>
             <v-container>
                 <v-form>
                     <v-text-field
                             v-model="account"
+                            :rules="[
+                                () => !!account || '该选项不能为空',
+                                () => !this.names.includes(this.account) || '该用户已存在',
+                            ]"
+                            :error-messages="errorMessage"
                             counter maxlength="10"
                             color="white"
                             label="Account"
-                            hint="该用户名被用过了"
+                            required
                     ></v-text-field>
                     <v-text-field
+                            :append-icon="show1 ? 'visibility_off' : 'visibility' "
+                            @click:append="show1 =! show1"
                             v-model="pw"
-                            counter
-                            maxlength="18"
+                            :rules="[
+                                () => !!pw || '该选项不能为空',
+                            ]"
+                            :error-messages="errorMessage"
+                            :type="show1 ? 'text' : 'password'"
                             color="white"
                             label="Password"
+                            required
                     ></v-text-field>
                     <v-text-field
                             v-model="repw"
-                            counter
-                            maxlength="18"
+                            :rules="[
+                                () => !!repw || '该选项不能为空',
+                                () => repw === pw || '前后密码不一致',
+                            ]"
+                            :error-messages="errorMessage"
+                            :type="show1 ? 'text' : 'password'"
                             color="white"
                             label="Password reinput"
+                            required
                     ></v-text-field>
                 </v-form>
             </v-container>
@@ -91,6 +109,7 @@
 <script>
     export default {
         name: "Vuepage",
+
         data: () => ({
             items: [{
                 con : '账户信息',
@@ -98,20 +117,33 @@
                 con : '安全登出',
             }],
 
+            errorMessage:[],
+            names:["bob","daer"],   //去复用户名
             account: null,
             pw: null,
             repw: null,
+            show1:false,
 
             drawer: false,
         }),
+
         computed: {
-            from () {
+            form () {
                 return {
                     account: this.account,
                     pw: this.pw,
                     repw: this.repw,
                 }
+            },
+        },
+
+        watch: {
+            chec() {
+                this.errorMessage = ''
             }
+        },
+
+        method: {
         }
 
     }
