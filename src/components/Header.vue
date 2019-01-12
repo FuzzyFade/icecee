@@ -1,37 +1,22 @@
 <template>
-    <!--<v-navigation-drawer temporary>-->
-        <!--<v-list>-->
-            <!--23333-->
-        <!--</v-list>-->
-    <!--</v-navigation-drawer>-->
-    <!--<div class="header">-->
-        <!--<div class="header_left">-->
-            <!--<div class="iconfont back_icon">&#xe624;</div>-->
-        <!--</div>-->
-        <!--<div class="header_input">-->
-            <!--<span class="iconfont">&#xe632;</span>-->
-            <!--<span> Search your need</span>-->
-        <!--</div>-->
-        <!--<div class="header_right">-->
-            <!--City-->
-            <!--<span class="iconfont arrow_icon">&#xeb6d;</span>-->
-        <!--</div>-->
-    <!--</div>-->
+    <div class="header">
+        <div class="header_left">
+            <div class="iconfont back_icon">&#xe624;</div>
+        </div>
+        <div class="header_input">
+            <span class="iconfont">&#xe632;</span>
+            <span> Search your need</span>
+        </div>
+        <div class="header_right">
+            City
+            <span class="iconfont arrow_icon">&#xeb6d;</span>
+        </div>
+    </div>
 </template>
 
 <script>
     export default {
         name: "Hoheader",
-        data: () => ({
-            items : [{
-                con : 'China',
-            }, {
-                con : 'theus',
-            }, {
-                con : 'meili',
-            }],
-            drawer: false,
-        })
     }
 </script>
 

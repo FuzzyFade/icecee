@@ -1,9 +1,9 @@
 <template>
     <swiper :options="swiperOption">
-        <swiper-slide v-for="page of pages">
+        <swiper-slide v-for="(page,num) of pages":key="num">
             <div class="icons">
                 <div class="icon"
-                     v-for="item of page">
+                     v-for="(item,index) of page":key="index">
                     <div class="picture">
                         <div class="iconfont content"
                              v-html="item.icon"
@@ -107,6 +107,6 @@
                     font-size .9rem
                     text-align center
                     position relative
-                    color #ffffff
+                    color #343434
 
 </style>

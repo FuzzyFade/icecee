@@ -5,14 +5,8 @@
 </template>
 
 <script>
-  import Homepage from './components/Homepage.vue'
-  import VueHopage from './components/Vuepage.vue'
   export default {
     name: 'App',
-    components: {
-      Homepage,
-      VueHopage
-    }
   }
 </script>
 

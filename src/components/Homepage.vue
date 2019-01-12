@@ -1,5 +1,9 @@
 <template>
-  <ho-header></ho-header>
+  <div>
+    <ho-header></ho-header>
+    <ho-swiper></ho-swiper>
+    <ho-icons></ho-icons>
+   </div>
 </template>
 
 <script>

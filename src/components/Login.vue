@@ -83,7 +83,8 @@
                             v-model="pw"
                             :rules="[
                                 rules.empty_if,
-                                rules.password_len,
+                                rules.password_short,
+                                rules.password_long,
                             ]"
                             :error-messages="errorMessage"
                             :type="show1 ? 'text' : 'password'"
@@ -119,7 +120,7 @@
 
 <script>
     export default {
-        name: "Vuepage",
+        name: "Login",
 
         data: () => ({              //信息
             items: [{
@@ -141,7 +142,8 @@
                 empty_if: value => !!value || '该选项不能为空',
                 account_same: (list, account) => !list.includes(account) || '该用户已存在',
                 password_same: (repw, pw) => repw === pw || '前后密码不一致',
-                password_len: value => (value + 1).length >= 8 || '密码长度要大于7',
+                password_short: value => (value + 1).length >= 7 || '密码长度要大于6',
+                password_long: value => (value + 1).length <= 33 || '密码过长',
             }
         }),
 
