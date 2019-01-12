@@ -105,11 +105,25 @@
                             label="重新输入密码"
                             required
                     ></v-text-field>
+                    <v-checkbox
+                            v-model="agree_raw"
+                            color="blue"
+                    >
+                        <div slot="label" style="font-weight:bold">
+                            我已同意
+                            <a href="" target="_blank" class="link_text">
+                                《233333333333》
+                            </a>
+                        </div>
+                    </v-checkbox>
                 </div>
                 <div>
                     <v-flex class="text-xs-center" style="padding-top: 2rem;">
-                        <v-btn large color="blue">
-                            <span>注册账户</span>
+                        <v-btn large color="blue" outline block round>
+                            <span>登录</span>
+                        </v-btn>
+                        <v-btn large color="blue" block round>
+                            <span>注册</span>
                         </v-btn>
                     </v-flex>
                 </div>
@@ -137,6 +151,8 @@
             show1:false,
 
             drawer: false,
+            agree_raw:false,
+            submit_if:false,
 
             rules: {
                 empty_if: value => !!value || '该选项不能为空',
@@ -164,13 +180,13 @@
         },
 
         method: {
-
         }
-
     }
 </script>
 
 <style lang="stylus" scoped>
     @import '~vuetify/src/stylus/main'
-
+    .link_text
+        text-decoration none
+        color #4396ec
 </style>
