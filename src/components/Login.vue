@@ -24,7 +24,6 @@
                 clipped-left
                 height="60px"
                 color="blue"
-                scroll-off-screen
         >
             <v-toolbar-side-icon
                     @click.stop="drawer = !drawer"
@@ -62,14 +61,14 @@
 
         <v-content>
             <v-container>
-                <div>
+                <v-form @submit.prevent="submit">
                     <v-text-field
+                            prepend-icon="person"
                             v-model="account"
                             :rules="[
                                 rules.empty_if,
                                 rules.account_same(names, account),
                             ]"
-                            :error-messages="errorMessage"
                             color="white"
                             label="用户名"
                             hint="用户名不可修改哦"
@@ -78,6 +77,7 @@
                     ></v-text-field>
 
                     <v-text-field
+                            prepend-icon="lock"
                             :append-icon="show1 ? 'visibility_off' : 'visibility' "
                             @click:append="show1 =! show1"
                             v-model="pw"
@@ -86,43 +86,56 @@
                                 rules.password_short,
                                 rules.password_long,
                             ]"
-                            :error-messages="errorMessage"
                             :type="show1 ? 'text' : 'password'"
                             color="white"
                             label="密码"
+                            hint="6~16个字符，区分大小写"
+                            counter
                             required
                     ></v-text-field>
 
                     <v-text-field
+                            prepend-icon="lock"
                             v-model="repw"
                             :rules="[
                                 rules.empty_if,
                                 rules.password_same(repw, pw),
                             ]"
-                            :error-messages="errorMessage"
                             :type="show1 ? 'text' : 'password'"
                             color="white"
-                            label="重新输入密码"
+                            label="确认密码"
+                            counter
                             required
                     ></v-text-field>
-                    <v-checkbox
-                            v-model="agree_raw"
-                            color="blue"
-                    >
-                        <div slot="label" style="font-weight:bold">
-                            我已同意
-                            <a href="" target="_blank" class="link_text">
-                                《233333333333》
-                            </a>
-                        </div>
-                    </v-checkbox>
-                </div>
+                </v-form>
+                <v-checkbox
+                        v-model="agree_raw"
+                        color="blue"
+                >
+                    <div slot="label" style="font-weight:bold">
+                        我已同意
+                        <a href="" target="_blank" class="link_text">
+                            《233333333333》
+                        </a>
+                    </div>
+                </v-checkbox>
                 <div>
                     <v-flex class="text-xs-center" style="padding-top: 2rem;">
-                        <v-btn large color="blue" outline block round>
+                        <v-btn large
+                               color="blue"
+                               outline
+                               block
+                               round>
                             <span>登录</span>
                         </v-btn>
-                        <v-btn large color="blue" block round>
+                        <v-btn
+                                large
+                                color="blue"
+                                block
+                                round
+                                :disabled="!formIf"
+                                type="submit"
+                        >
                             <span>注册</span>
                         </v-btn>
                     </v-flex>
@@ -133,6 +146,7 @@
 </template>
 
 <script>
+    import axios from 'axios'
     export default {
         name: "Login",
 
@@ -143,7 +157,6 @@
                 con : '安全登出',
             }],
 
-            errorMessage:[],
             names:["bob","daer"],   //已注册的用户名
             account: null,
             pw: null,
@@ -151,16 +164,15 @@
             show1:false,
 
             drawer: false,
-            agree_raw:false,
-            submit_if:false,
+            agree_raw: false,
 
             rules: {
                 empty_if: value => !!value || '该选项不能为空',
                 account_same: (list, account) => !list.includes(account) || '该用户已存在',
                 password_same: (repw, pw) => repw === pw || '前后密码不一致',
                 password_short: value => (value + 1).length >= 7 || '密码长度要大于6',
-                password_long: value => (value + 1).length <= 33 || '密码过长',
-            }
+                password_long: value => (value + 1).length <= 17 || '密码过长',
+            },
         }),
 
         computed: {
@@ -169,17 +181,19 @@
                     account: this.account,
                     pw: this.pw,
                     repw: this.repw,
-                };
+                }
             },
-        },
-
-        watch: {
-            chec() {
-                this.errorMessage = ''
+            formIf () {
+                return(
+                      this.agree_raw
+                )
             }
         },
 
         method: {
+            register() {
+
+            }
         }
     }
 </script>
