@@ -10,13 +10,13 @@ import Vuetify from 'vuetify'
 import 'vuetify/src/stylus/app.styl'
 import router from './router';
 
-Vue.config.productionTip = false
-Vue.use(VueAwesomeSwiper)
+Vue.config.productionTip = false;
+Vue.use(VueAwesomeSwiper);
 Vue.use(Vuetify, {
   iconfont: 'mdi'
-})
+});
 
 new Vue({
   router,
   render: function (h) { return h(App) },
-}).$mount('#app')
+}).$mount('#app');
