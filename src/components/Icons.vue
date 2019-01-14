@@ -107,6 +107,6 @@
                     font-size .9rem
                     text-align center
                     position relative
-                    color #343434
+                    color #ffffff
 
 </style>

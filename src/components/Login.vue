@@ -1,64 +1,19 @@
 <template>
     <v-app dark>
-        <v-navigation-drawer
-                v-model="drawer"
-                dark
-                app
-                clipped
-        >
-            <v-list>
-                <v-list-tile class="title">
-                    Lambda
-                </v-list-tile>
-                <v-list-tile class="title">
-                    Lambda
-                </v-list-tile>
-                <v-list-tile class="title">
-                    Lambda
-                </v-list-tile>
-            </v-list>
-        </v-navigation-drawer>
-
         <v-toolbar
                 dark
                 clipped-left
                 height="60px"
                 color="blue"
         >
-            <v-toolbar-side-icon
-                    @click.stop="drawer = !drawer"
-            ></v-toolbar-side-icon>
+            <v-toolbar-side-icon>
+                <router-link to="Home"></router-link>
+            </v-toolbar-side-icon>
             <v-toolbar-title>
                 注册
             </v-toolbar-title>
             <v-spacer></v-spacer>
-            <v-btn icon>
-                <v-icon>search</v-icon>
-            </v-btn>
-            <v-toolbar-items>
-                <v-menu
-                        offset-y
-                        transition="slide-y-transition"
-                        left
-                >
-                    <v-btn icon slot="activator">
-                        <v-icon>more_vert</v-icon>
-                    </v-btn>
-                    <v-list>
-                        <v-list-tile
-                                v-for="(item,index) in items"
-                                :key="index"
-                                @click=""
-                        >
-                            <v-list-tile-title>
-                                {{item.con}}
-                            </v-list-tile-title>
-                        </v-list-tile>
-                    </v-list>
-                </v-menu>
-            </v-toolbar-items>
         </v-toolbar>
-
         <v-content>
             <v-container>
                 <v-form @submit.prevent="submit">
@@ -66,8 +21,8 @@
                             prepend-icon="person"
                             v-model="account"
                             :rules="[
-                                rules.empty_if,
-                                rules.account_same(names, account),
+                                check_comment.empty_if,
+                                check_comment.account_same(names, account)
                             ]"
                             color="white"
                             label="用户名"
@@ -82,9 +37,9 @@
                             @click:append="show1 =! show1"
                             v-model="pw"
                             :rules="[
-                                rules.empty_if,
-                                rules.password_short,
-                                rules.password_long,
+                                check_comment.empty_if,
+                                check_comment.password_short,
+                                check_comment.password_long,
                             ]"
                             :type="show1 ? 'text' : 'password'"
                             color="white"
@@ -98,8 +53,8 @@
                             prepend-icon="lock"
                             v-model="repw"
                             :rules="[
-                                rules.empty_if,
-                                rules.password_same(repw, pw),
+                                check_comment.empty_if,
+                                check_comment.password_same(repw, pw),
                             ]"
                             :type="show1 ? 'text' : 'password'"
                             color="white"
@@ -163,10 +118,10 @@
             repw: null,
             show1:false,
 
-            drawer: false,
             agree_raw: false,
+            errorMessages: '',
 
-            rules: {
+            check_comment: {
                 empty_if: value => !!value || '该选项不能为空',
                 account_same: (list, account) => !list.includes(account) || '该用户已存在',
                 password_same: (repw, pw) => repw === pw || '前后密码不一致',
@@ -185,13 +140,16 @@
             },
             formIf () {
                 return(
-                      this.agree_raw
+                    this.account && this.pw && this.repw && this.agree_raw
                 )
             }
         },
 
         method: {
             register() {
+
+            },
+            login() {
 
             }
         }
