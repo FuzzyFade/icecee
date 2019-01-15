@@ -16,6 +16,7 @@ Vue.use(Vuetify, {
   iconfont: 'mdi'
 });
 
+
 new Vue({
   router,
   render: function (h) { return h(App) },
