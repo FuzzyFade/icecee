@@ -62,6 +62,17 @@
                             counter
                             required
                     ></v-text-field>
+
+                    <v-text-field
+                            prepend-icon="mdi-chat"
+                            v-model="invite"
+                            :rules="[
+                                check_comment.empty_if,
+                            ]"
+                            color="white"
+                            label="邀请码"
+                            required
+                    ></v-text-field>
                 </v-form>
                 <v-checkbox
                         v-model="agree_raw"
@@ -107,12 +118,13 @@
     export default {
         name: "Register",
 
-        data: () => ({              //信息
-            names: ["bob","daer"],   //已注册的用户名
+        data: () => ({
+            names: ["bob","daer"], //已注册的用户名
 
-            account: '',
-            pw: '',
-            repw: '',
+            account: '', //账户
+            pw: '', //密码
+            repw: '', //确认密码
+            invite: '', //邀请码
 
             show1: false,
             agree_raw: false,
@@ -135,9 +147,13 @@
                 }
             },
             formIf () {
-                return(
-                    this.account && this.pw && this.repw && this.agree_raw
-                )
+                if(!this.account || !this.pw || !this.repw || !this.invite || !this.agree_raw){
+                    return false
+                }else if(this.pw != this.repw) {
+                    return false
+                }else {
+                    return true
+                }
             }
         },
 
@@ -146,7 +162,16 @@
                 this.$router.push({path:n})
             },
             register() {
-                axios.post()
+                this.$axios({
+                    method:'post',
+                    url:'/api/',
+                    data:{
+                        name:this.account,
+                        password:this.pw,
+                    }
+                }).then((res)=>{
+                    console.log(res.data)
+                })
             },
         }
     }
