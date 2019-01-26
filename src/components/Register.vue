@@ -1,21 +1,23 @@
 <template>
-    <v-app dark>
-        <v-toolbar
+    <v-app>
+        <v-card
+                class="mx-auto"
+                color="#2e2e2e"
                 dark
-                clipped-left
-                height="60px"
-                color="blue"
+                min-width="400"
         >
-            <v-btn icon>
-                <v-icon>arrow_back</v-icon>
-            </v-btn>
-            <v-toolbar-title class="title">
-                注册
-            </v-toolbar-title>
-            <v-spacer></v-spacer>
-        </v-toolbar>
         <v-content>
             <v-container>
+                <v-card-title>
+                    <v-icon
+                            large
+                            left
+                    >
+                        mdi-twitter
+                    </v-icon>
+                    <span class="title font-weight-light">注册成为新用户</span>
+                </v-card-title>
+                <v-divider dark></v-divider>
                 <v-form @submit.prevent="submit">
                     <v-text-field
                             prepend-icon="person"
@@ -86,7 +88,8 @@
                     </div>
                 </v-checkbox>
                 <div>
-                    <v-flex class="text-xs-center" style="padding-top: 2rem;">
+                    <v-divider dark></v-divider>
+                    <v-flex class="text-xs-center" style="padding-top: 1rem;">
                         <v-btn large
                                color="blue"
                                outline
@@ -110,6 +113,7 @@
                 </div>
             </v-container>
         </v-content>
+        </v-card>
     </v-app>
 </template>
 
@@ -150,6 +154,10 @@
                 if(!this.account || !this.pw || !this.repw || !this.invite || !this.agree_raw){
                     return false
                 }else if(this.pw != this.repw) {
+                    return false
+                }else if(this.pw.length <= 6) {
+                    return false
+                }else if(this.pw.length >= 16) {
                     return false
                 }else {
                     return true
