@@ -172,7 +172,7 @@
             register() {
                 this.$axios({
                     method:'post',
-                    url:'/api/',
+                    url:'/api/user',
                     data:{
                         name:this.account,
                         password:this.pw,

@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Register from '@/components/Register.vue'
 import Login from '@/components/Login.vue'
-import Homepage from '@/components/Homepage.vue'
+import Homepage from '@/pages/Homepage.vue'
 import Motionimage from '@/components/Motionimage.vue'
 
 Vue.use(Router);
